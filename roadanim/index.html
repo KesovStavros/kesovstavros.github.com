@@ -1,0 +1,30 @@
+<meta name="viewport" content="width=1000px, height=600px, initial-scale=1.0, maximum-scale=1.0">
+<canvas id="Michael" width="1000" height="600"></canvas>
+<script>
+	var roadpos=-1000
+	var canv=document.getElementById("Michael")
+	var ctx=canv.getContext("2d")
+	var bgposses=[[-1000,0.25],[-1000,0.5],[-1000,1],[-1000,1.5],[-1000,2],[-1000,2.5]]
+	var bgimg =new Image()
+	bgimg.src="bg.png"
+	var skyimg =new Image()
+	skyimg.src="sky.png"
+	var roadimg =new Image()
+	roadimg.src="road.png"
+	var dermovozimg =new Image()
+	dermovozimg.src="dermovoz.png"
+	console.log(dermovozimg)
+	setInterval(function(){
+		ctx.drawImage(skyimg,0,0,1000,1000)
+		for(bg of bgposses){
+			console.log()
+			bg[0]=bg[0]+bg[1]
+			if (bg[0]>=2000-(bg[1]*20)-1800){bg[0]=-1000}
+			ctx.drawImage(bgimg,bg[0],100+(bg[1]*5),2000+(bg[1]*20),500+(bg[1]*5))
+}
+roadpos=roadpos+3
+if (roadpos>=2000-(3*20)-2000){roadpos=-1000}
+ctx.drawImage(roadimg,roadpos,100,2000+(3*20),500+(3*5))
+ctx.drawImage(dermovozimg,500,300,500,280)
+},20)
+</script>
