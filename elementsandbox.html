@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Element sandbox by Kesov Stavros</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             html{
                 background-color: #ffffff;
@@ -11,7 +12,7 @@
                 position: fixed;
                 width: 100%;
                 left:0px;
-                bottom:0px;
+                top:0px;
                 background: #c7c7c7;
             }
             select{
@@ -38,7 +39,28 @@
                 <option value="gluon">Gluon</option>
                 <option value="higgs">Higgs boson</option>
             </select>
+            <label for="color">Color</label>
+            <select id="color">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
         </upboard><br>
+        <canvas id="gameframe" width="100%" height="100%"></canvas>
         There will be game in future
+        <script>
+            var canvobj=document.getElementById("gameframe")
+            var ctx=canvobj.getContext("2d")
+            var objects={}
+            canvobj.addEventListener("click",function(e){
+                objects.push({type:document.getElementById("objecttype").value,x:clientX,x:e.clientY})
+            })
+            ctx.beginPath()
+            objects.array.forEach(element => {
+                if (element.type=="Photon"){
+                    ctx.arc(element.x,element.y,2,0,2*Math.PI)
+                }
+            });
+        </script>
     </body>
 </html>
